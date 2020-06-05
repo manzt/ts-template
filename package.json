@@ -1,0 +1,79 @@
+{
+	"name": "ts-template",
+	"version": "0.0.1",
+	"description": "",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"types": "dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"scripts": {
+		"start": "rollup -c -w",
+		"build": "rollup -c",
+		"lint": "eslint src/**/*.ts --quiet --fix",
+		"format:check": "./node_modules/.bin/prettier --check src/**/*.ts",
+		"test": "jest --coverage",
+		"test:watch": "jest --coverage --watch",
+		"test:prod": "npm run lint && npm run format:check && npm run test -- --no-cache"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/manzt/ts-template.git"
+	},
+	"keywords": [],
+	"author": "Trevor James Manz",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/manzt/ts-template/issues"
+	},
+	"homepage": "https://github.com/manzt/ts-template#readme",
+	"devDependencies": {
+		"@rollup/plugin-typescript": "^4.1.2",
+		"@types/jest": "^25.2.3",
+		"@typescript-eslint/eslint-plugin": "^3.1.0",
+		"@typescript-eslint/parser": "^3.1.0",
+		"eslint": "^7.1.0",
+		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-prettier": "^3.1.3",
+		"jest": "^26.0.1",
+		"prettier": "^2.0.5",
+		"rollup": "^2.13.1",
+		"ts-jest": "^26.1.0",
+		"typescript": "^3.9.3"
+	},
+	"prettier": {
+		"semi": true,
+		"trailingComma": "all",
+		"singleQuote": true,
+		"printWidth": 120
+	},
+	"eslintConfig": {
+		"root": true,
+		"parser": "@typescript-eslint/parser",
+		"plugins": [
+			"prettier",
+			"@typescript-eslint"
+		],
+		"extends": [
+			"prettier",
+			"eslint:recommended",
+			"plugin:@typescript-eslint/eslint-recommended",
+			"plugin:@typescript-eslint/recommended"
+		],
+		"rules": {
+			"prettier/prettier": [
+				"error"
+			]
+		},
+		"ignorePatterns": [
+			"rollup.config.js"
+		]
+	},
+	"jest": {
+		"preset": "ts-jest"
+	}
+}
